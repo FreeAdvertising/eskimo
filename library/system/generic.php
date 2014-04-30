@@ -1,30 +1,47 @@
 <?php
-	namespace Free\System;
 	
-	defined("FR_FRAME") or die;
+	namespace Free\System;
 
 	/**
-	 * Generic object class
+	 * Generic 
+	 *
+	 * A slight improvement over stdClass (new feature: methods!!) for generic objects
 	 */
 	class Generic {
-		protected $_errors = array();
+		/**
+		 * Errors can be tracked per-instance, this stores them
+		 * @var array
+		 */
+		private $_errors = array();
 
-		//private $error;
+		/**
+		 * Shortcut instead of doing sizeof($this->_errors) > 0
+		 * @var boolean
+		 */
+		public $hasError = false;
 
-		public function __construct($properties = array()){
-			//if(sizeof($properties) > 0){
-				//$this->setProperties($properties);
-			//}
-			//
-			//$this->error = new Error(); //temp commented out
-			
+		/**
+		 * Create the object instance
+		 * @return  Generic object
+		 */
+		public function __construct(){
 			return $this;
 		}
 
-		public function __toString(){
+		/**
+		 * Get the name of the class
+		 * @return string
+		 */
+		public function toString(){
 			return get_class($this);
 		}
 
+		/**
+		 * Get a specific property by KEY
+		 * @param  string $key     The property you want to retrieve
+		 * @param  string $default A default value to display if the property does not exist
+		 * @return mixed
+		 */
 		public function get($key = null, $default = null){
 			$ret = $default;
 
@@ -37,6 +54,11 @@
 			return $ret;
 		}
 
+		/**
+		 * Set a property
+		 * @param string $key   Name of the property you want to set
+		 * @param mixed $value  Value you want the property to have (array, object, string, etc)
+		 */
 		public function set($key, $value){
 			$ret = (isset($this->$key) ? $this->$key : null);
 			
@@ -45,6 +67,10 @@
 			return $ret;
 		}
 
+		/**
+		 * Set instance properties from an existing array
+		 * @param array $properties
+		 */
 		public function setProperties($properties = array()){
 			if(sizeof($properties) > 0 && (is_array($properties) || is_object($properties))){
 				foreach($properties as $key => $value){
@@ -57,6 +83,11 @@
 			return false;
 		}
 
+		/**
+		 * Get all properties (all public by default, private by $private flag)
+		 * @param  boolean $private Return value includes private properties
+		 * @return array
+		 */
 		public function getProperties($private = false){
 			$ret = array();
 
@@ -73,20 +104,26 @@
 			return $ret;
 		}
 
+		/**
+		 * Set the instance error message
+		 * @param string $error_msg
+		 */
 		public function setError($error_msg){
 			$ret = array("class" => $this->toString(), "error" => $error_msg);
 
 			$this->_errors[] = $ret;
 
+			$this->hasError = true;
+
 			return $ret;
 		}
 
 		/**
-		 * [Get ALL the errors]
+		 * Get ALL the errors
 		 * @return mixed
 		 */
 		public function getError(){
-			if(sizeof($this->_errors) > 0){
+			if($this->hasError){
 				return $this->_errors;
 			}
 
