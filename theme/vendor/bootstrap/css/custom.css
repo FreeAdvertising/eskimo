@@ -1,0 +1,168 @@
+body {
+	padding-top: 50px;
+}
+
+.logout {
+	margin-right: 15px;
+}
+
+.container,
+table.output {
+	margin-top: 20px;
+}
+
+a.view, a.clipboard {
+	display: none;
+}
+
+tr:hover a.view,
+tr:hover a.clipboard {
+	display: inline-block;
+}
+
+h3.panel-title {
+	text-transform: capitalize;
+}
+
+ul.dropdown-menu {
+	margin-top: 2px !important;
+}
+
+.actions {
+	float: right;
+}
+
+.match {
+	display: table-row;
+}
+
+.nomatch {
+	display: none;
+}
+
+.nav {
+	margin: 0px 0px 1px 4px;
+	border-bottom: none;
+}
+
+.delete {
+	float: right;
+}
+
+span.input-group-btn {
+	top: 13px;
+}
+
+.desc {
+	color: #ccc;
+	font-size: 12px;
+	padding-top: 5px;
+	padding-bottom: 0px;
+	margin-bottom: 0px;
+}
+
+.local-version {
+	color: #ccc;
+	font-family: Courier, serif;
+}
+
+.local-version .commit {
+	color: black;
+}
+
+#copied-to-clipboard {
+	display: none;
+}
+
+.copied-password {
+	font-weight: bold;
+}
+
+.jumbotron {
+	background-color: white;
+}
+
+.jumbotron h1 {
+	text-indent: -9999px;
+	background-image: url("../../images/Free_logo.png");
+	background-repeat: no-repeat;
+	width: 100px;
+	height: 150px;
+	margin: 0 auto;
+}
+
+.panel-free > .panel-heading {
+  background-image: -webkit-linear-gradient(top, #3c3c3c 0%, #222 100%);
+  background-image: linear-gradient(to bottom, #3c3c3c 0%, #222 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff3c3c3c', endColorstr='#ff222222', GradientType=0);
+}
+
+.panel-free .panel-title {
+	color: white;
+}
+
+.panel-free {
+  border-color: #dddddd;
+}
+
+.panel-free > .panel-heading {
+  color: #333333;
+  background-color: #f5f5f5;
+  border-color: #dddddd;
+}
+
+.panel-free > .panel-heading + .panel-collapse .panel-body {
+  border-top-color: #dddddd;
+}
+
+.panel-free > .panel-footer + .panel-collapse .panel-body {
+  border-bottom-color: #dddddd;
+}
+
+.filter-var,
+.filter-cols li a {
+	text-transform: capitalize;
+}
+
+.filter-group button {
+	width: 150px;
+}
+
+th {
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+}
+
+span.password {
+	padding: 3px;
+}
+
+span.password.active {
+	background-color: #b9def0;
+	font-weight: bold;
+	color: #31708f;
+}
+
+th#username,
+th#client,
+th#domain,
+th#host,
+th#valid,
+th#user,
+th#description,
+th#email {
+	cursor: pointer;
+}
+
+.reset-secret-question {
+	margin-right: 4px;
+}
+
+.g-administrator {
+	color: red;
+}
+
+a[data-toggle="collapse"] {
+	color: #428bca;
+}
