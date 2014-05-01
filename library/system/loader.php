@@ -106,8 +106,8 @@
 		public function getModel($slug = null, $data){
 			$parts = array("Home", "sampleMethod");
 
-			if(strpos($model, "/") !== false){
-				$parts = explode("/", $model);
+			if(strpos($slug, "/") !== false){
+				$parts = explode("/", $slug);
 			}
 
 			$modelPath = $this->directories->path["models"].$parts[0].".php";
