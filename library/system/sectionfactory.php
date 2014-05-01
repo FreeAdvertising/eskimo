@@ -536,8 +536,6 @@
 
 				$HTML->append($result_row);
 			}else { //multiple items
-				unset($result_row); //ensure it is empty
-
 				foreach($data->results as $result){
 					//create a new TR for each result
 					$result_row = new HTML("tr");

@@ -124,13 +124,13 @@
 
 					//add theme namespace
 					$className = sprintf("\Free\Theme\%sModel", ucwords($parts[0]));
-					$instance = new $className();
+					//$instance = new $className();
 
 					//call the requested method
 					try {
-						if(method_exists($instance, $parts[1])){
+						if(method_exists($className, $parts[1])){
 							//return $instance->{$parts[1]};
-							return call_user_func_array(array($instance, $parts[1]), $data);
+							return call_user_func_array(array($className, $parts[1]), $data);
 						}
 						throw new InvalidModelException(sprintf("<strong>/theme/models/%s.php</strong> or <strong>%s::%s</strong> not found", $parts[0], $parts[0], $parts[1]));
 					}catch(InvalidModelException $e){
