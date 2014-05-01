@@ -16,6 +16,7 @@
 
 		/**
 		 * Instantiates the required model and calls the method
+		 * @deprecated 1.1
 		 * @param  string $model [description]
 		 * @return mixed
 		 */

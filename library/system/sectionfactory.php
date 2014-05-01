@@ -567,17 +567,18 @@
 		 */
 		public static function datatable($atts, $content){
 			try {
-				self::$_model = new Model();
-
-				$atts["_sender"] = "table";
-
 				$params = new Generic();
 				$params->set("limit", (int) $atts["limit"]);
+
+				$loader = new Loader();
+				$modelData = $loader->getModel($atts["source"], $params);
+
+				$atts["_sender"] = "table";
 
 				$args = array(
 					"atts" => $atts,
 					"content" => $content,
-					"data" => self::$_model->call($atts["source"], $params),
+					"data" => $modelData,
 				);
 
 				//source and limit are used by the model, don't pass them to the

@@ -1,6 +1,7 @@
 <?php
 	namespace Free\System;
 
+	use Free\System\Exception\InvalidModelException;
 	use Free\System\Exception\FileNotFoundException;
 	
 	defined("FR_FRAME") or die;
@@ -74,7 +75,7 @@
 		/**
 		 * Loads and instantiates a controller
 		 * @param  string $file     Filename of the controller you want to load
-		 * @return {Controller} object
+		 * @return Controller object
 		 */
 		public function getController($file = null){
 			$controllerPath = $this->directories->path["controllers"].$file.".php";
@@ -99,22 +100,42 @@
 
 		/**
 		 * Loads and instantiates a model
-		 * @param  string $file     Filename of the model you want to load
-		 * @return {Model} object
+		 * @param  string $slug     Model and method you want to call
+		 * @return Model object
 		 */
-		public function getModel($file = null){
-			$modelPath = $this->directories->path["models"].$file.".php";
+		public function getModel($slug = null, $data){
+			$parts = array("Home", "sampleMethod");
+
+			if(strpos($model, "/") !== false){
+				$parts = explode("/", $model);
+			}
+
+			$modelPath = $this->directories->path["models"].$parts[0].".php";
 
 			try {
 				$_exists = $this->_exists($modelPath);
+
+				if(false === is_array($data)){
+					$data = array($data);
+				}
 
 				if($_exists->result){
 					include($_exists->file_path);
 
 					//add theme namespace
-					$className = sprintf("\Free\Theme\%sModel", ucwords($file));
+					$className = sprintf("\Free\Theme\%sModel", ucwords($parts[0]));
+					$instance = new $className();
 
-					return new $className();
+					//call the requested method
+					try {
+						if(method_exists($instance, $parts[1])){
+							//return $instance->{$parts[1]};
+							return call_user_func_array(array($instance, $parts[1]), $data);
+						}
+						throw new InvalidModelException(sprintf("<strong>/theme/models/%s.php</strong> or <strong>%s::%s</strong> not found", $parts[0], $parts[0], $parts[1]));
+					}catch(InvalidModelException $e){
+						die($e->getMessage());
+					}
 				}else {
 					throw new FileNotFoundException(sprintf("<strong>%s</strong> could not be located.", $_exists->file_path));
 				}
