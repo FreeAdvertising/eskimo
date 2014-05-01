@@ -504,7 +504,7 @@
 
 			$HTML = new HTML("table", array(
 				"class" => "table table-bordered table-hover table-striped data-table", 
-				"data-source" => strtolower($data->callback->__toString()),
+				"data-source" => (method_exists($data->callback, "__toString") ? strtolower($data->callback->__toString()) : "null"),
 				"width" => "100%",
 				)
 			);
