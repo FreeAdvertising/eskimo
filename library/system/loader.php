@@ -17,7 +17,7 @@
 			$this->search_path = FR_BASE ."/theme";
 
 			$searchDir = $this->search_path ."/";
-			$searchURI = "http://". $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]. "wp-content/themes/free-framework/theme/";
+			$searchURI = "http://". $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]. "wp-content/themes/eskimo/theme/";
 
 			$this->directories = new Generic();
 			$this->directories->set("path", array(
