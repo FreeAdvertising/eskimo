@@ -526,31 +526,33 @@
 
 			$HTML->append($row);
 
-			//build table content
-			if($data->num_rows === 1){ //single item
-				$result_row = new HTML("tr");
-
-				foreach($data->result as $value){
-					$result_row->append(new HTML("td", array("text" => $value)));
-				}
-
-				$HTML->append($result_row);
-			}else { //multiple items
-				foreach($data->results as $result){
-					//create a new TR for each result
+			//build table content unless there is no data
+			if(sizeof($data->results) > 0 || $data->num_rows === 1){
+				if($data->num_rows === 1){ //single item
 					$result_row = new HTML("tr");
-					//create a new TD for each property within each result
-					foreach($result as $value){
-						$td = new HTML("td", array("text" => $value));
 
-						//append each drop to the row
-						$result_row->append($td);
+					foreach($data->result as $value){
+						$result_row->append(new HTML("td", array("text" => $value)));
 					}
 
-					//append each row to the HTML object
 					$HTML->append($result_row);
-				}
+				}else { //multiple items
+					foreach($data->results as $result){
+						//create a new TR for each result
+						$result_row = new HTML("tr");
+						//create a new TD for each property within each result
+						foreach($result as $value){
+							$td = new HTML("td", array("text" => $value));
 
+							//append each drop to the row
+							$result_row->append($td);
+						}
+
+						//append each row to the HTML object
+						$HTML->append($result_row);
+					}
+
+				}
 			}
 
 			return $HTML;
