@@ -14,9 +14,9 @@
 
 		/**
 		 * Create the databaseresult object
-		 * @param array  $results  [description]
-		 * @param [type] $callback [description]
-		 * @param array  $columns  [description]
+		 * @param array    $results  Array of results from a database query
+		 * @param function $callback A method to call after building the DatabaseResult list (optional)
+		 * @param array    $columns  Array of table columns to build a SectionFactory:: datatable with (optional)
 		 */
 		public function __construct($results = array(), $callback = null, $columns = array()){
 			$this->_output = new GenericList();
@@ -34,6 +34,10 @@
 			return $this;
 		}
 
+		/**
+		 * Get all results from the database call
+		 * @return GenericList object
+		 */
 		public function getResults(){
 			return $this->_output;
 		}
