@@ -3,6 +3,8 @@
 
 	defined("FR_FRAME") or die;
 
+	use Free\System\Exception\InvalidModelException;
+
 	class Model extends Generic {
 		protected $db;
 		protected $logger;

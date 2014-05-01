@@ -2,8 +2,6 @@
 	namespace Free\System;
 	
 	defined("FR_FRAME") or die;
-
-	use \Free\System\GenericList;
 	
 	class DatabaseResult {
 		/**
