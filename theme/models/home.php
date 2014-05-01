@@ -2,6 +2,7 @@
 	namespace Free\Theme;
 	
 	use \Free\System\Model;
+	use \Free\System\Generic;
 	use \Free\System\Database;
 
 	defined("FR_FRAME") or die;

@@ -1,5 +1,7 @@
 <?php
 	namespace Free\System;
+
+	use \Free\System\GenericList;
 	
 	defined("FR_FRAME") or die;
 	

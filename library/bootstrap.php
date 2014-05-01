@@ -6,6 +6,7 @@
 	include_once "exceptions/filenotfoundexception.php";
 	include_once "exceptions/invalidserviceproviderexception.php";
 	include_once "system/generic.php";
+	include_once "system/genericlist.php";
 	include_once "system/security.php";
 	include_once "system/utils.php";
 	include_once "system/logger.php";
