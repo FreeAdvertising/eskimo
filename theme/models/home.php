@@ -7,7 +7,7 @@
 	defined("FR_FRAME") or die;
 
 	class HomeModel extends Model {
-		public function test(Generic $properties){
+		public function test($properties){
 			$params = new Generic();
 			$params->set("table", "usermeta");
 			$params->set("columns", array("umeta_id as ID", "user_id As UID", "meta_key as M_KEY"));
